@@ -11,6 +11,9 @@ import { makeStore } from "../redux/store";
 import reset from "../public/styles/reset";
 import grid from "../public/styles/grid";
 
+// carousel
+import "react-multi-carousel/lib/styles.css";
+
 const GlobalStyle = createGlobalStyle`
   ${grid}
   ${reset}
@@ -20,6 +23,7 @@ const theme = {
 	colors: {
 		primary: "#252584",
 		secondary: "#4DD7FF",
+		tertiary: "#A8A8C4",
 	},
 };
 

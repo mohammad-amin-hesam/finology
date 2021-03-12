@@ -73,7 +73,8 @@ const HeaderBox = styled.header((props) => {
           margin: 0 30px;
           a {
             color: #fff;
-            font-weight: bold;
+						font-weight: 600;
+						font-size: .9rem;
           }
         }
         .active-link {

@@ -38,16 +38,19 @@
 		"cross-env": "^7.0.2",
 		"next-compose-plugins": "^2.2.0",
 		"node-sass": "^4.14.0",
-		"typescript": "^3.8.3"
+		"typescript": "^3.8.3",
+		"url-loader": "^4.1.1"
 	},
 	"dependencies": {
 		"formik": "^2.1.4",
 		"jss": "^10.1.1",
 		"next": "^9.3.5",
 		"next-redux-wrapper": "^6.0.0-rc.7",
+		"parallax-js": "^3.1.0",
 		"react": "^16.13.1",
+		"react-animated-css": "^1.2.1",
 		"react-dom": "^16.13.1",
-		"react-multi-carousel": "^2.5.5",
+		"react-multi-carousel": "^2.6.2",
 		"react-redux": "^7.2.0",
 		"redux": "^4.0.5",
 		"redux-thunk": "^2.3.0",

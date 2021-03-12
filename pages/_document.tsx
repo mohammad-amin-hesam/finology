@@ -31,9 +31,32 @@ class MyDocument extends Document {
 		return (
 			<Html lang="en" dir="ltr">
 				<Head>
+					<link rel="preconnect" href="https://fonts.gstatic.com" />
 					<link
 						href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap"
 						rel="stylesheet"
+					/>
+					<link
+						href="https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap"
+						rel="stylesheet"
+					/>
+					<link
+						href="https://fonts.googleapis.com/css2?family=Nunito&display=swap"
+						rel="stylesheet"
+					/>
+					<link
+						href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap"
+						rel="stylesheet"
+					/>
+					<link
+						rel="icon"
+						href="/images/logo.png"
+						type="image/png"
+						sizes="16x16"
+					/>
+					<link
+						rel="stylesheet"
+						href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
 					/>
 				</Head>
 				<body dir="ltr">
