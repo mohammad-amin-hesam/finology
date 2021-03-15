@@ -5,7 +5,6 @@ import CommentItem from "./CommentItem";
 
 const responsive = {
 	superLargeDesktop: {
-		// the naming can be any, depends on you.
 		breakpoint: { max: 4000, min: 3000 },
 		items: 5,
 	},
@@ -23,11 +22,29 @@ const responsive = {
 	},
 };
 
-const CommentList: React.FC = () => {
+const CustomDot: React.FC = ({ onClick, ...rest }: any) => {
+	const { active } = rest;
+	return <Circle active={active} onClick={() => onClick()} />;
+};
+
+const CommentList: React.FC<{ carouselRef: React.LegacyRef<any> }> = ({
+	carouselRef,
+}) => {
 	return (
 		<CommentListBox>
 			<div className="comment-slider-container">
-				<Carousel arrows={false} responsive={responsive} infinite={true}>
+				<Carousel
+					keyBoardControl={true}
+					responsive={responsive}
+					infinite={true}
+					arrows={false}
+					ref={carouselRef}
+					showDots
+					customDot={<CustomDot />}
+					slidesToSlide={3}
+					dotListClass="comment-carousel-dots"
+					containerClass="comment-carousel-container-class"
+				>
 					<CommentItem />
 					<CommentItem />
 					<CommentItem />
@@ -45,11 +62,33 @@ const CommentList: React.FC = () => {
 const CommentListBox = styled.div(() => {
 	return `
     overflow: hidden;
-    margin-bottom: 50px;
+		margin-bottom: 50px;
     .comment-slider-container {
-      transform: translate(105.5px, 0);
-    }
+			transform: translate(105.5px, 0);
+			position: relative;
+		}
+		.comment-carousel-dots {
+			bottom: 10px;
+			margin-right: 105.5px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.comment-carousel-container-class {
+			padding-bottom: 50px;
+		}
   `;
+});
+
+const Circle = styled.div<{ active: boolean }>(({ active }) => {
+	return `
+		width: 15px;
+		height: 15px;
+		margin: 0 7px;
+		border-radius: 50%;
+		background-color: ${active ? "#252584" : "#E0E0FE"};
+		cursor: pointer;
+	`;
 });
 
 export default CommentList;

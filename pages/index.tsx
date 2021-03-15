@@ -1,6 +1,7 @@
 import Head from "next/head";
 import React from "react";
 import Comments from "../components/Comments";
+import People from "../components/People/People";
 import TopSection from "../components/TopSection";
 import UxSection from "../components/UxSection";
 
@@ -44,6 +45,7 @@ const Index = () => {
 				imgSrc={"/images/ux/content-002.png"}
 			/>
 			<Comments />
+			<People />
 		</>
 	);
 };

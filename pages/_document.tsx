@@ -58,6 +58,10 @@ class MyDocument extends Document {
 						rel="stylesheet"
 						href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
 					/>
+					<link
+						rel="stylesheet"
+						href="/styles/fontello-33ac2f7f/css/finilogy.css"
+					/>
 				</Head>
 				<body dir="ltr">
 					<Main />
