@@ -4,7 +4,7 @@ import styled from "styled-components";
 interface TitleProps {
 	title: string;
 	circleColor?: string;
-	iconName?: string;
+	iconUrl?: string;
 	iconSize?: string;
 }
 
@@ -13,7 +13,7 @@ const Title: React.FC<TitleProps> = (props) => {
 		title,
 		circleColor = "#F32D13",
 		children,
-		iconName = "icon-heart",
+		iconUrl = "/images/icons/heart.svg",
 		iconSize,
 	} = props;
 
@@ -21,7 +21,7 @@ const Title: React.FC<TitleProps> = (props) => {
 		<TitleBox iconSize={iconSize} circleColor={circleColor}>
 			<div className="title-left">
 				<div className="title-box-icon">
-					<i className={iconName}></i>
+					<img src={iconUrl} />
 				</div>
 				<h2>{title}</h2>
 			</div>
@@ -41,6 +41,7 @@ const TitleBox = styled.div<{ circleColor?: string; iconSize?: string }>(
 		} = props;
 
 		return `
+		margin-top: 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -59,9 +60,9 @@ const TitleBox = styled.div<{ circleColor?: string; iconSize?: string }>(
         display: flex;
         align-items: center;
         justify-content: center;
-        i {
+        img {
           color: #fff;
-          ${iconSize ? `font-size: ${iconSize};` : ""}
+          ${iconSize ? `width: ${iconSize};` : ""}
         }
       }
       h2 {

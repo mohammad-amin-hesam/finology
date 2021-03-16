@@ -72,7 +72,7 @@ const UxSectionBox = styled.section<UxSectionBoxProps>((props) => {
 	} = props;
 
 	return `
-    margin-top: 130px;
+    margin-top: 70px;
     overflow: hidden;
     .ux-image {
       img {

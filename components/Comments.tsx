@@ -13,9 +13,9 @@ const Comments: React.FC = () => {
 	return (
 		<CommentsBox>
 			<div className="container">
-				<Title title="What other people say about our service">
+				<Title title="What other people say about our service" iconSize="17px">
 					<div className="right-arrow-icon" onClick={handleNext}>
-						<i className="icon-right-open"></i>
+						<img src="/images/icons/arrow-right.svg" />
 					</div>
 				</Title>
 			</div>
@@ -42,11 +42,8 @@ const CommentsBox = styled.section(() => {
 				transform: scale(1.12);
         box-shadow: 3px 4px 25px -3px #EEDEFF;
 			}
-			i {
-				color: #8251BC;
-				display: flex;
-				align-items: center;
-				justify-content: center;
+			img {
+				width: 14px;
 			}
 		}
   `;

@@ -49,6 +49,10 @@ class MyDocument extends Document {
 						rel="stylesheet"
 					/>
 					<link
+						href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap"
+						rel="stylesheet"
+					/>
+					<link
 						rel="icon"
 						href="/images/logo.png"
 						type="image/png"
@@ -57,10 +61,6 @@ class MyDocument extends Document {
 					<link
 						rel="stylesheet"
 						href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
-					/>
-					<link
-						rel="stylesheet"
-						href="/styles/fontello-33ac2f7f/css/finilogy.css"
 					/>
 				</Head>
 				<body dir="ltr">
