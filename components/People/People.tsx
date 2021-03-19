@@ -185,7 +185,7 @@ export const PeopleButton = styled.button<{ color: string; bg: string }>(
 export const buttonHover = `
 	transition: all .2s linear;
 	&:hover {
-		transform: scale(1.16);
+		transform: scale(1.09);
 	}
 `;
 

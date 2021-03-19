@@ -1,6 +1,10 @@
 import Head from "next/head";
 import React from "react";
+import Brands from "../components/Brands";
+import CenterTitle from "../components/CenterTitle";
 import Comments from "../components/Comments";
+import ContactForm from "../components/Contact/ContactForm";
+import Footer from "../components/Footer";
 import People from "../components/People/People";
 import TopSection from "../components/TopSection";
 import UxSection from "../components/UxSection";
@@ -46,6 +50,13 @@ const Index = () => {
 			/>
 			<Comments />
 			<People />
+			<CenterTitle title="We've worked with">
+				<Brands />
+			</CenterTitle>
+			<CenterTitle title="Contact Us">
+				<ContactForm />
+			</CenterTitle>
+			<Footer />
 		</>
 	);
 };
