@@ -45,6 +45,9 @@ const CommentsBox = styled.section(() => {
 			img {
 				width: 14px;
 			}
+			@media only screen and (max-width: 500px) {
+				margin-right: 0;
+			}
 		}
   `;
 });

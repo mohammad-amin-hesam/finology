@@ -33,7 +33,7 @@ const UxSection: React.FC<UxSectionProps> = (props) => {
 		<UxSectionBox ref={uxRef} direction={direction}>
 			<div className="container">
 				<div className="row">
-					<div className="col-7 ux-image">
+					<div className="col-12 col-lg-7 ux-image">
 						<Animated
 							animationIn={animationLeftIn}
 							animationOut={animationLeftOut}
@@ -42,7 +42,7 @@ const UxSection: React.FC<UxSectionProps> = (props) => {
 							<img src={imgSrc} alt="content image" />
 						</Animated>
 					</div>
-					<div className="col-5 ux-content">
+					<div className="col-12 col-lg-5 ux-content">
 						<Animated
 							animationIn={animationRightIn}
 							animationOut={animationRightOut}

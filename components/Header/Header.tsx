@@ -1,46 +1,62 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import { links } from "./links";
 import { useRouter } from "next/dist/client/router";
+import { makeAnimationSlideLeft } from "./MobileMenu/AnimatedVisibility";
+import SideBar from "./MobileMenu/SideBar";
+
+const AnimatedSidebar = makeAnimationSlideLeft(SideBar);
 
 const Header = () => {
 	const router = useRouter();
+	const [menu, setMenu] = useState<boolean>(false);
 
 	return (
-		<HeaderBox>
-			<div className="logo">
-				<Link href="/">
-					<a>
-						<img src="/images/logo.png" alt="Finology logo" />
-					</a>
-				</Link>
-			</div>
-			<nav>
-				<ul>
-					{links.map((item) => {
-						const active = item.href === router.pathname ? "active-link" : "";
+		<>
+			<AnimatedSidebar open={menu} className="on-top" setMenu={setMenu} />
+			<div className="container">
+				<HeaderBox>
+					<div className="logo d-none d-md-block">
+						<Link href="/">
+							<a>
+								<img src="/images/logo.png" alt="Finology logo" />
+							</a>
+						</Link>
+					</div>
+					<div className="menu d-md-none" onClick={() => setMenu(!menu)}>
+						<div></div>
+						<div></div>
+						<div></div>
+					</div>
+					<nav className="d-none d-md-flex">
+						<ul>
+							{links.map((item) => {
+								const active =
+									item.href === router.pathname ? "active-link" : "";
 
-						return (
-							<li key={item.id} className={`${active}`}>
-								{item.target !== "normal" ? (
-									<a href={item.href} target={item.target}>
-										{item.name}
-									</a>
-								) : (
-									<Link href={item.href}>
-										<a>{item.name}</a>
-									</Link>
-								)}
-							</li>
-						);
-					})}
-				</ul>
-			</nav>
-			<div className="search-icon">
-				<img src="/images/search.svg" alt="Search icon" />
+								return (
+									<li key={item.id} className={`${active}`}>
+										{item.target !== "normal" ? (
+											<a href={item.href} target={item.target}>
+												{item.name}
+											</a>
+										) : (
+											<Link href={item.href}>
+												<a>{item.name}</a>
+											</Link>
+										)}
+									</li>
+								);
+							})}
+						</ul>
+					</nav>
+					<div className="search-icon">
+						<img src="/images/search.svg" alt="Search icon" />
+					</div>
+				</HeaderBox>
 			</div>
-		</HeaderBox>
+		</>
 	);
 };
 
@@ -89,7 +105,19 @@ const HeaderBox = styled.header((props) => {
         width: 25px;
         cursor: pointer;
       }
-    }
+		}
+		.menu {
+			cursor: pointer;
+			div {
+				height: .5px;
+				background: #fff;
+				margin-bottom: 7px;
+				width: 25px;
+				&:last-of-type {
+					margin-bottom: 0;
+				}
+			}
+		}
   `;
 });
 

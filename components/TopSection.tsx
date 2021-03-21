@@ -6,7 +6,7 @@ import TopSectionContent from "./TopSectionContent";
 const TopSection: React.FC = () => {
 	return (
 		<TopSectionBox>
-			<div className="container top-section-container">
+			<div className="top-section-container">
 				<Header />
 				<TopSectionContent />
 			</div>

@@ -178,6 +178,11 @@ export const PeopleButton = styled.button<{ color: string; bg: string }>(
 			height: 35px;
 			font-weight: bold;
 			${buttonHover}
+			@media only screen and (max-width: 560px) {
+				font-size: .68rem;
+				width: 60px;
+				height: 30px;
+			}
 		`;
 	}
 );

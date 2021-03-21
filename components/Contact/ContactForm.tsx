@@ -32,7 +32,15 @@ const ContactFormBox = styled.div(() => {
 				height: 100%;
         border: 0;
       }
-    }
+		}
+		@media only screen and (max-width: 945px) {
+			width: 800px;
+		}
+
+		@media only screen and (max-width: 845px) {
+			width: 100%;
+			flex-direction: column-reverse;
+		}
   `;
 });
 

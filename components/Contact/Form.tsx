@@ -173,9 +173,9 @@ const StyledForm = styled.form(
 		padding: 30px 30px 20px;
 		background-color: #fff;
 		width: 430px;
-		box-shadow: 0px 14px 24px 2px #e4e4e4;
 		height: calc(100% + 30px);
 		z-index: 1000;
+		box-shadow: 0px 14px 24px 2px #e4e4e4;
 		transform: scale(1.1) translateY(-15px);
 		.form-item {
 			display: flex;
@@ -273,6 +273,18 @@ const StyledForm = styled.form(
 		}
 		.input-error {
 			border-color: #f32d13 !important;
+		}
+		@media only screen and (max-width: 945px) {
+			width: 380px;
+		}
+
+		@media only screen and (max-width: 845px) {
+			box-shadow: initial !important;
+			transform: scale(1) translateY(0);
+		}
+
+		@media only screen and (max-width: 430px) {
+			width: 100%;
 		}
 	`;
 	}

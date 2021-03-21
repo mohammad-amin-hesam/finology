@@ -15,10 +15,12 @@ const responsive = {
 	tablet: {
 		breakpoint: { max: 1024, min: 464 },
 		items: 2,
+		slidesToSlide: 2,
 	},
 	mobile: {
-		breakpoint: { max: 464, min: 0 },
+		breakpoint: { max: 564, min: 0 },
 		items: 1,
+		slidesToSlide: 1,
 	},
 };
 
@@ -76,6 +78,16 @@ const CommentListBox = styled.div(() => {
 		}
 		.comment-carousel-container-class {
 			padding-bottom: 50px;
+		}
+		@media only screen and (max-width: 700px) {
+			.comment-slider-container {
+				transform: translate(0, 0);
+				padding-left: 15px;
+			}
+
+			.comment-carousel-dots {
+				margin-right: 15px;
+			}
 		}
   `;
 });

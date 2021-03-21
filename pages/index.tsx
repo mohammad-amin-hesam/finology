@@ -16,47 +16,49 @@ const Index = () => {
 				<title>Finology</title>
 			</Head>
 			<TopSection />
-			<UxSection
-				animationLeftIn="bounceInLeft"
-				animationLeftOut="fadeOut"
-				animationRightIn="fadeIn"
-				animationRightOut="fadeOut"
-				direction="ltr"
-				topDesc={`Lorem ipsum is simply dummy text of the printing and
+			<main>
+				<UxSection
+					animationLeftIn="bounceInLeft"
+					animationLeftOut="fadeOut"
+					animationRightIn="fadeIn"
+					animationRightOut="fadeOut"
+					direction="ltr"
+					topDesc={`Lorem ipsum is simply dummy text of the printing and
 									typesetting indystry. Lorem Ipsum has been the industry's
 									standard dummy text ever since the 1500s.`}
-				bottomDesc={`when an unknown printer took a galley of type and scrambled it
+					bottomDesc={`when an unknown printer took a galley of type and scrambled it
 										to make a type specimen book. ti has survived not noly five
 										centuries, but also the leap into electronic typesetting,
 										remaining essentially unchanged.`}
-				title={"We can give you our best user experience to your system"}
-				imgSrc={"/images/ux/content-001.png"}
-			/>
-			<UxSection
-				animationLeftIn="bounceInRight"
-				animationLeftOut="fadeOut"
-				animationRightIn="fadeIn"
-				animationRightOut="fadeOut"
-				direction="rtl"
-				topDesc={`Lorem ipsum is simply dummy text of the printing and
+					title={"We can give you our best user experience to your system"}
+					imgSrc={"/images/ux/content-001.png"}
+				/>
+				<UxSection
+					animationLeftIn="bounceInRight"
+					animationLeftOut="fadeOut"
+					animationRightIn="fadeIn"
+					animationRightOut="fadeOut"
+					direction="rtl"
+					topDesc={`Lorem ipsum is simply dummy text of the printing and
 									typesetting indystry. Lorem Ipsum has been the industry's
 									standard dummy text ever since the 1500s.`}
-				bottomDesc={`when an unknown printer took a galley of type and scrambled it
+					bottomDesc={`when an unknown printer took a galley of type and scrambled it
 										to make a type specimen book. ti has survived not noly five
 										centuries, but also the leap into electronic typesetting,
 										remaining essentially unchanged.`}
-				title={"Easy access. Wheneve, wherever you want"}
-				imgSrc={"/images/ux/content-002.png"}
-			/>
-			<Comments />
-			<People />
-			<CenterTitle title="We've worked with">
-				<Brands />
-			</CenterTitle>
-			<CenterTitle title="Contact Us">
-				<ContactForm />
-			</CenterTitle>
-			<Footer />
+					title={"Easy access. Wheneve, wherever you want"}
+					imgSrc={"/images/ux/content-002.png"}
+				/>
+				<Comments />
+				<People />
+				<CenterTitle title="We've worked with">
+					<Brands />
+				</CenterTitle>
+				<CenterTitle title="Contact Us">
+					<ContactForm />
+				</CenterTitle>
+				<Footer />
+			</main>
 		</>
 	);
 };

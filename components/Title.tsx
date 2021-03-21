@@ -20,7 +20,7 @@ const Title: React.FC<TitleProps> = (props) => {
 	return (
 		<TitleBox iconSize={iconSize} circleColor={circleColor}>
 			<div className="title-left">
-				<div className="title-box-icon">
+				<div className="title-box-icon d-none d-md-flex">
 					<img src={iconUrl} />
 				</div>
 				<h2>{title}</h2>
@@ -47,7 +47,8 @@ const TitleBox = styled.div<{ circleColor?: string; iconSize?: string }>(
     justify-content: space-between;
     margin-bottom: 50px;
     .title-left {
-      display: flex;
+			display: flex;
+			flex: 1;
       align-items: flex-start;
       max-width: 420px;
       .title-box-icon {
@@ -71,7 +72,15 @@ const TitleBox = styled.div<{ circleColor?: string; iconSize?: string }>(
         font-weight: bold;
         font-size: 1.5rem;
       }
-    }
+		}
+		@media only screen and (max-width: 600px) {
+			.title-left {
+				h2 {
+					font-size: 1.2rem;
+					margin-right: 15px;
+				}
+			}
+		}
   `;
 	}
 );

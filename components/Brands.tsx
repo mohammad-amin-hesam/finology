@@ -35,6 +35,8 @@ const Brands: React.FC = () => {
 const BrandsBox = styled.div(() => {
 	return `
 		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
 		.brand-item {
 			margin: 0 15px;
 		}
