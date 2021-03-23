@@ -12,9 +12,19 @@ const Header = () => {
 	const router = useRouter();
 	const [menu, setMenu] = useState<boolean>(false);
 
+	React.useEffect(() => {
+		if (menu) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "visible";
+		}
+	}, [menu]);
+
 	return (
 		<>
-			<AnimatedSidebar open={menu} className="on-top" setMenu={setMenu} />
+			<AnimatedWrapper>
+				<AnimatedSidebar open={menu} className="on-top" setMenu={setMenu} />
+			</AnimatedWrapper>
 			<div className="container">
 				<HeaderBox>
 					<div className="logo d-none d-md-block">
@@ -60,6 +70,14 @@ const Header = () => {
 	);
 };
 
+const AnimatedWrapper = styled.div(() => {
+	return `
+		.on-top {
+			height: 100vh;
+		}
+	`;
+});
+
 const HeaderBox = styled.header((props) => {
 	const {
 		theme: {
@@ -71,7 +89,7 @@ const HeaderBox = styled.header((props) => {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 30px 0;
+		padding: 30px 0;
     .logo {
       img {
         max-width: 70px;

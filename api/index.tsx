@@ -1,27 +1,56 @@
-import { uniq_id } from "../helpers/props";
+import { User } from "../redux/reducer/usersReducer";
+import { FETCH_USERS } from "../redux/types";
 
-export default class api {
+const dbName = "users";
+
+export default class Api {
 	getState: () => any;
 	dispatch: (obj: {}) => any;
-	db: [];
+	db: User[];
 
 	constructor(obj) {
-		const data = localStorage.getItem("users");
+		// const data = localStorage.getItem(dbName);
 		this.getState = obj.getState;
 		this.dispatch = obj.dispatch;
-		this.db = data ? JSON.parse(data) : [];
+		this.db = obj.getState().users;
 	}
 
-	Setter = (data) => {};
+	Setter = (data: User[]): void => {
+		// localStorage.setItem(dbName, JSON.stringify(data));
+		this.dispatch({
+			type: FETCH_USERS,
+			data,
+		});
+	};
 
-	GetAll = () => {};
+	Post = (user: User): void => {
+		this.Setter([...this.db, user]);
+	};
 
-	Get = () => {};
+	GetAll = () => {
+		this.Setter(this.db);
+	};
 
-	Put = () => {};
+	GetById = (id): User => {
+		return this.db.filter((user) => user.id === id)[0];
+	};
 
-	Post = (data) =>
-		this.Setter([...this.db, { ...data, read: false, id: uniq_id() }]);
+	Put = (user: User) => {
+		const item = this.db.filter((el) => el.id === user.id)[0];
+		const index = this.db.indexOf(item);
+		let newDB = [...this.db];
+		newDB[index] = user;
+		this.Setter(newDB);
+	};
 
-	Delete = (id) => this.Setter(this.db.filter((item: any) => item.id !== id));
+	Delete = (data) => {
+		let filteredList = [...this.db];
+
+		for (let i = 0; i < data.length; i++) {
+			const id = data[i];
+			filteredList = filteredList.filter((item) => item.id !== id);
+		}
+
+		this.Setter(filteredList);
+	};
 }

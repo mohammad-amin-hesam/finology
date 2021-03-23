@@ -1,7 +1,73 @@
 import React from "react";
 import styled from "styled-components";
 import Carousel from "react-multi-carousel";
-import CommentItem from "./CommentItem";
+import CommentItem, { CommentItemType } from "./CommentItem";
+
+const list: CommentItemType[] = [
+	{
+		image: "/images/people/david-campion.jpg",
+		name: "David Champion",
+		bio: "CEO of ICloud",
+		text:
+			"System is excellent. It has made my system user experience to become on of the easiest!",
+	},
+	{
+		image: "/images/people/gaetan-houssin.jpg",
+		name: "David Frank va Hord",
+		bio: "CEO of Marks.co",
+		text:
+			"I just wanted to share a quick not and let you know that you guys do a really good job.",
+	},
+	{
+		image: "/images/people/sylvain-salomon.jpg",
+		name: "Lucas Bond",
+		bio: "BOD of Skyscanner",
+		text:
+			"Now it's almost like having a designer right I Just choose the page, make the change.",
+	},
+	{
+		image: "/images/people/david-campion.jpg",
+		name: "David Champion",
+		bio: "CEO of ICloud",
+		text:
+			"System is excellent. It has made my system user experience to become on of the easiest!",
+	},
+	{
+		image: "/images/people/gaetan-houssin.jpg",
+		name: "David Frank va Hord",
+		bio: "CEO of Marks.co",
+		text:
+			"I just wanted to share a quick not and let you know that you guys do a really good job.",
+	},
+	{
+		image: "/images/people/sylvain-salomon.jpg",
+		name: "Lucas Bond",
+		bio: "BOD of Skyscanner",
+		text:
+			"Now it's almost like having a designer right I Just choose the page, make the change.",
+	},
+	{
+		image: "/images/people/david-campion.jpg",
+		name: "David Champion",
+		bio: "CEO of ICloud",
+		text:
+			"System is excellent. It has made my system user experience to become on of the easiest!",
+	},
+	{
+		image: "/images/people/gaetan-houssin.jpg",
+		name: "David Frank va Hord",
+		bio: "CEO of Marks.co",
+		text:
+			"I just wanted to share a quick not and let you know that you guys do a really good job.",
+	},
+	{
+		image: "/images/people/sylvain-salomon.jpg",
+		name: "Lucas Bond",
+		bio: "BOD of Skyscanner",
+		text:
+			"Now it's almost like having a designer right I Just choose the page, make the change.",
+	},
+];
 
 const responsive = {
 	superLargeDesktop: {
@@ -47,14 +113,9 @@ const CommentList: React.FC<{ carouselRef: React.LegacyRef<any> }> = ({
 					dotListClass="comment-carousel-dots"
 					containerClass="comment-carousel-container-class"
 				>
-					<CommentItem />
-					<CommentItem />
-					<CommentItem />
-					<CommentItem />
-					<CommentItem />
-					<CommentItem />
-					<CommentItem />
-					<CommentItem />
+					{list.map((item, index) => {
+						return <CommentItem key={index} {...item} />;
+					})}
 				</Carousel>
 			</div>
 		</CommentListBox>

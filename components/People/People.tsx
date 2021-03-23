@@ -1,69 +1,162 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
+import { deleteList, fetchUsers } from "../../redux/actions/users";
+import { User } from "../../redux/reducer/usersReducer";
 import Title from "../Title";
+import Add from "./Add";
+import ViewProfile from "./ViewProfile";
 
-const People = () => {
+const People: React.FC = () => {
+	const { users } = useSelector((state) => state);
+	const [addOpen, setAddOpen] = React.useState<boolean>(false);
+	const [id, setId] = React.useState<string>("");
+	const [editAble, setEditable] = React.useState<boolean>(false);
+	const [selectedArray, setSelectedArray] = React.useState<string[]>([]);
+	const [userId, setUserId] = React.useState<string>("lskdjflskjdfe23243");
+	const editIcon = React.useRef(null);
+	const checkBox = React.useRef(null);
+
+	const dispatch = useDispatch();
+
+	React.useEffect(() => {
+		// Get all
+		dispatch(fetchUsers());
+	}, []);
+
+	const closeEditPanel = () => {
+		setEditable(false);
+		setSelectedArray([]);
+	};
+
+	const handleCheckedToggle = (id) => {
+		if (selectedArray.includes(id)) {
+			setSelectedArray(selectedArray.filter((el) => el !== id));
+		} else {
+			setSelectedArray([...selectedArray, id]);
+		}
+	};
+
+	const handleView = (e, id) => {
+		if (
+			editIcon.current?.contains(e.target) ||
+			checkBox.current?.contains(e.target)
+		)
+			return;
+		setUserId(id);
+	};
+
 	return (
-		<PeopleBox>
-			<div className="container">
-				<Title
-					title="Our important people is listed here"
-					circleColor="#F43CB7"
-					iconUrl="/images/icons/happy-face.svg"
-					iconSize="16px"
-				>
-					<div>
-						<PeopleButton color="#F9CA3D" bg="#FFFEDF">
-							Edit
-						</PeopleButton>
-						<PeopleButton color="#8A5CC1" bg="#EEDEFF">
-							Add
-						</PeopleButton>
-						{/* <div className="people-delete-container">
-							<span className="people-cancel">Cancel</span>
-							<div className="people-delete" title="Delete">
-								<i className="icon-trash-empty"></i>
-							</div>
-						</div> */}
-					</div>
-				</Title>
+		<>
+			<PeopleBox>
 				<div className="container">
-					<div className="people-card-list">
-						{[1, 2, 3, 4, 5, 6, 7].map((item, index) => {
-							return (
-								<PeopleCard
-									key={index}
-									img="/images/people/darlene-chabrat.jpg"
-								>
-									<div className="people-circle">
-										<img src="/images/icons/checked.svg" />
+					<Title
+						title="Our important people is listed here"
+						circleColor="#F43CB7"
+						iconUrl="/images/icons/happy-face.svg"
+						iconSize="16px"
+					>
+						<div>
+							{editAble ? (
+								<div className="people-delete-container">
+									<span className="people-cancel" onClick={closeEditPanel}>
+										Cancel
+									</span>
+									<div
+										className="people-delete"
+										title="Delete"
+										onClick={() => {
+											dispatch(
+												deleteList(selectedArray, () => {
+													setEditable(false);
+													setSelectedArray([]);
+												})
+											);
+										}}
+									>
+										<img src="/images/icons/garbage.svg" />
 									</div>
-									<div className="people-edit-circle">
-										<img src="/images/icons/pencil.svg" />
-									</div>
-									<div className="poeple-card-image"></div>
-									<div className="poeple-card-content">
-										<h4>Marissa Lawren</h4>
-										<span>Customer Support</span>
-									</div>
-								</PeopleCard>
-							);
-						})}
+								</div>
+							) : (
+								<>
+									<PeopleButton
+										onClick={() => setEditable(true)}
+										color="#F9CA3D"
+										bg="#FFFEDF"
+									>
+										Edit
+									</PeopleButton>
+									<PeopleButton
+										color="#8A5CC1"
+										bg="#EEDEFF"
+										onClick={() => setAddOpen(true)}
+									>
+										Add
+									</PeopleButton>
+								</>
+							)}
+						</div>
+					</Title>
+					<div className="container">
+						<div className="people-card-list">
+							{users.map((user: User, index) => {
+								return (
+									<PeopleCard
+										key={index}
+										img={user.image}
+										activeChecked={selectedArray.includes(user.id)}
+										onClick={(e) => handleView(e, user.id)}
+									>
+										{editAble ? (
+											<div
+												className="people-circle"
+												onClick={() => handleCheckedToggle(user.id)}
+												ref={editIcon}
+											>
+												<img src="/images/icons/checked.svg" />
+											</div>
+										) : (
+											<div
+												className="people-edit-circle"
+												onClick={() => setId(user.id)}
+												ref={checkBox}
+											>
+												<img src="/images/icons/pencil.svg" />
+											</div>
+										)}
+										<div className="poeple-card-image"></div>
+										<div className="poeple-card-content">
+											<h4>{user.name}</h4>
+											<span>{user.bio}</span>
+										</div>
+									</PeopleCard>
+								);
+							})}
+						</div>
 					</div>
 				</div>
-			</div>
-		</PeopleBox>
+			</PeopleBox>
+			<Add open={addOpen} handleClose={() => setAddOpen(false)} />
+			<Add id={id} open={id !== ""} handleClose={() => setId("")} />
+			<ViewProfile
+				id={userId}
+				open={userId !== ""}
+				handleClose={() => setUserId("")}
+			/>
+		</>
 	);
 };
 
-const PeopleCard = styled.div<{ img: string }>(
+const PeopleCard = styled.div<{ img: string; activeChecked: boolean }>(
 	({
 		img,
 		theme: {
 			colors: { primary },
 		},
+		activeChecked,
 	}) => {
 		return `
+		cursor: pointer;
 		width: 180px;
 		box-shadow: 0px 7px 12px 0px #1616161a;
 		position: relative;
@@ -81,7 +174,7 @@ const PeopleCard = styled.div<{ img: string }>(
 			height: 20px;
 			transition: all .2s linear;
 			cursor: pointer;
-			background-color: ${primary};
+			background-color: ${activeChecked ? primary : "#fff"};
 			border-radius: 50%;
 			display: flex;
 			align-items: center;
@@ -153,9 +246,8 @@ const PeopleBox = styled.div(() => {
 				border-radius: 50%;
 				cursor: pointer;
 				${buttonHover}
-				i {
-					color: #F56E6F;
-					font-size: .9rem;
+				img {
+					width: 14px;
 				}
 			}
 		}

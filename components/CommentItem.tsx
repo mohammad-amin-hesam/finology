@@ -1,21 +1,27 @@
 import React from "react";
 import styled from "styled-components";
 
-const CommentItem: React.FC = () => {
+export type CommentItemType = {
+	image: string;
+	name: string;
+	bio: string;
+	text: string;
+};
+
+const CommentItem: React.FC<CommentItemType> = (props) => {
+	const { image, name, bio, text } = props;
+
 	return (
-		<CommentItemBox image="/images/people/david-campion.jpg">
+		<CommentItemBox image={image}>
 			<div className="comment-item-top">
 				<div className="comment-item-avatar"></div>
 				<div className="comment-item-name">
-					<h4>David Champion</h4>
-					<span>CEO of ICloud</span>
+					<h4>{name}</h4>
+					<span>{bio}</span>
 				</div>
 			</div>
 			<div className="comment-item-bottom">
-				<p>
-					"System is excellent. It has made my system user experience to become
-					on of the easiest!"
-				</p>
+				<p>"{text}"</p>
 			</div>
 		</CommentItemBox>
 	);

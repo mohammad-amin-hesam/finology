@@ -63,4 +63,4 @@ class MyApp extends App<ReduxWrapperAppProps> {
 	}
 }
 
-export default withRedux(makeStore, { debug: true })(MyApp);
+export default withRedux(makeStore, { debug: false })(MyApp);

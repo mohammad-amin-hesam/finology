@@ -16,8 +16,7 @@ const SideBar: React.FC<{ setMenu: (bool: boolean) => void }> = ({
 					<img src="/images/logo.png" alt="Finology Logo" />
 				</div>
 				<div className="menu-close" onClick={() => setMenu(false)}>
-					<div></div>
-					<div></div>
+					<img src="/images/icons/cancel.svg" />
 				</div>
 			</div>
 			<nav className="sidebar-content">
@@ -62,10 +61,10 @@ const StyeldSidebar = styled.div(
     background-image: url(/images/mobile/mobile-rounded-001.svg);
     background-repeat: no-repeat;
     background-size: 100%;
-    background-position: -100px ​128%;
+    background-position: -100px 128%;
     background-color: ${primary};
     z-index: 1000000000000;
-    overflowY: auto;
+    overflow-y: auto;
     padding: 30px;
     .sidebar-header {
       display: flex;
@@ -76,16 +75,8 @@ const StyeldSidebar = styled.div(
     }
     .menu-close {
       cursor: pointer;
-      div {
-        height: 20px;
-        width: 2px;
-        background-color: #fff;
-        &:first-of-type {
-          transform: rotate(45deg) translate(14px, 14px);
-        }
-        &:last-of-type {
-          transform: rotate(135deg);
-        }
+      img {
+        width: 20px;
       }
     }
     .sidebar-content {
