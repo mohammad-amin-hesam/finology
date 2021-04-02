@@ -13,7 +13,7 @@ const People: React.FC = () => {
 	const [id, setId] = React.useState<string>("");
 	const [editAble, setEditable] = React.useState<boolean>(false);
 	const [selectedArray, setSelectedArray] = React.useState<string[]>([]);
-	const [userId, setUserId] = React.useState<string>("lskdjflskjdfe23243");
+	const [userId, setUserId] = React.useState<string>("");
 	const editIcon = React.useRef(null);
 	const checkBox = React.useRef(null);
 
